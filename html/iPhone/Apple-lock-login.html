@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>virtual iPhone login</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            font-family: 'PingFang SC';
+        }
+      .org{
+          position: absolute;
+          top: 50px;
+          left: 500px;
+          border: #fff 1px solid;
+          width: 350px;
+          height: 600px;
+          cursor: pointer;
+          background-image: url(bk.jpeg);
+          background-repeat: no-repeat;
+      }
+      /* .org:after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        
+        z-index: -1;
+        } */
+
+      
+      .signal{
+          position: relative;
+          top: 50px;
+          left: 115px;
+          width: 132px;
+          height: 100px;
+      }
+      #signal-word{
+          width: 132px;
+      }
+      #signal-cir div{
+          float: left;
+          width: 12px;
+          height: 12px;
+          border: 1px #fff solid;
+          border-radius: 50%;
+          margin-top:12px;
+          margin-left:12px;         
+      }
+      .num-pan{
+          position: relative;
+          top: 30px;
+          left: 18px;
+      }
+      .num-pan .num{
+          float: left;
+          width: 80px;
+          height: 80px;
+          margin-top:12px;
+          margin-left:18px;  
+          border: 1px #fff solid;
+          border-radius: 50%;
+          line-height: 80px;
+          text-align: center;
+          font-size: 24px;
+          cursor: pointer;
+      }
+      .num-pan :last-child{
+          position: relative;
+          left: 99px;
+      }
+      #num-pan .num .num-wor{
+        display: block;
+        position: relative;
+        top: -64px;
+        left: 2px;
+        font-size: 11px;
+        letter-spacing: 2px;     
+      } 
+      .menu{
+          position: absolute;
+          bottom: 20px;
+          width: 100%;
+      }
+      .menu div{
+          display: inline-block;
+          position: relative;
+          font-size: 12px;
+          width: auto;
+          margin-left:40px; 
+          margin-right:94px;    
+          cursor: pointer; 
+      }
+      .menu :nth-child(2){
+          position: relative;
+          left: 46px;
+      }
+    </style>
+</head>
+
+<body>
+    <!-- main interface -->
+    <div class="org">
+        <div class="signal">
+            <div class="signal-word" id="signal-word">触控ID或输入密码</div>
+            <div class="signal-cir" id="signal-cir">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="num-pan" id="num-pan">
+            <div class="num">1</div>
+            <div class="num">2
+                <span class="num-wor">
+                    ABC
+                </span>
+            </div>
+            <div class="num">3
+                <span class="num-wor">
+                    DEF
+                </span>
+            </div>
+            <div class="num">4
+                <span class="num-wor">
+                    GHI
+                </span>
+            </div>
+            <div class="num">5
+                <span class="num-wor">
+                    JKL
+                </span>
+            </div>
+            <div class="num">6
+                <span class="num-wor">
+                    MNO
+                </span>
+            </div>
+            <div class="num">7
+                <span class="num-wor">
+                    PQRS
+                </span>
+            </div>
+            <div class="num">8
+                <span class="num-wor">
+                    TUV
+                </span>
+            </div>
+            <div class="num">9
+                <span class="num-wor">
+                    WXYZ
+                </span>
+            </div>
+            <div class="num">0</div>
+        </div>
+        <div class="menu">
+            <div>紧急情况</div>
+            <div id="cancel">取消</div>
+        </div>
+        
+    </div>
+    <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+    <script>
+        $(function(){
+            var tryN = 0;
+            $('#num-pan .num').on('mousedown',function(event){
+                tryN++
+                console.log(tryN)
+                if(tryN>4){
+                    // console.log(tryN);
+                    $('#cancel').text('12');
+                    $('#signal-cir div').slice(0,tryN).css('backgroundColor','');
+                    tryN=0;}
+                else{}
+                $('#signal-cir div').slice(0,tryN).css('backgroundColor','rgba(255,255,255,0.7)');
+                $(this).css('backgroundColor','rgba(255,255,255,0.7)');  
+                $('#cancel').text('删除')
+                }).on('mouseup',function(){
+                $(this).css('backgroundColor','');
+            })   
+            $('#cancel').on('click',function(){
+                    $('#signal-cir div').slice(0,tryN).css('backgroundColor','');    
+                    tryN--;  
+                    $('#signal-cir div').slice(0,tryN).css('backgroundColor','rgba(255,255,255,0.7)');     
+                  })  
+            
+            })
+
+
+
+    </script>
+</body>
+
+</html>
